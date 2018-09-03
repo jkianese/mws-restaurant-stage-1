@@ -1,7 +1,9 @@
-if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker) {
   navigator.serviceWorker
   .register('/sw.js')
-  .catch(function(err) {
+  .then(function(reg) {
+    /* console.log("offline coolness"); */
+  }).catch(function(err) {
     console.log(err);
   });
 }
@@ -171,6 +173,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.setAttribute('alt', `Photo of ${restaurant.name}`);
   li.append(image);
   
   const name = document.createElement('h1'); // DB changed to h2
