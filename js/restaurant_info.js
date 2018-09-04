@@ -1,3 +1,13 @@
+if (navigator.serviceWorker) {
+  navigator.serviceWorker
+  .register('/sw.js')
+  .then(function(reg) {
+    /* console.log("offline coolness"); */
+  }).catch(function(err) {
+    console.log(err);
+  });
+}
+
 let restaurant;
 var newMap;
 
